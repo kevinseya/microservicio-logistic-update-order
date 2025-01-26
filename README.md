@@ -41,3 +41,9 @@ Start the server by running:
 ```bash
 node src/app.js
 ```
+
+The server will start on port 3001. Open your browser and navigate to:
+
+```bash
+http://localhost:3001
+```
