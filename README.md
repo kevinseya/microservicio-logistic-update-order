@@ -15,7 +15,7 @@ Make sure you have the following installed on your system:
 ### 1. Clone the repository (if applicable)
 If the project is hosted on a Git repository, clone it to your local machine:
 ```bash
-git clone https://github.com/kevinseya/microservicio-logistic-create-order.git
+git clone https://github.com/kevinseya/microservicio-logistic-update-order.git
 ```
 2. Install Dependencies
 
