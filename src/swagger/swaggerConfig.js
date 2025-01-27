@@ -25,11 +25,12 @@ const swaggerOptions = {
                         shippingAddress: { type: 'string', description: 'Shipping address for the package' },
                         status: { type: 'string', description: 'Current status of the order' },
                     },
+                    required: ['senderName', 'receiverName', 'packageDetails','shippingAddress', 'status'],
                 },
             },
         },
     },
-    apis: ['./src/routes/*.js'], // Path to API documentation
+    apis: ['./routes/*.js'], // Path to API documentation
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
