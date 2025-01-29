@@ -4,12 +4,20 @@ const orderController = require('../controllers/orderController');
 
 /**
  * @swagger
- * /orders/{id}:
+ * /orders/{orderId}:
  *   put:
- *     summary: Create a new order
- *     description: Create a new logistics order with the provided details.
+ *     summary: Update an existing order
+ *     description: Update an order using its UUID.
  *     tags:
  *       - Orders
+ *     parameters:
+ *       - in: path
+ *         name: orderId
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: The UUID of the order to update
  *     requestBody:
  *       required: true
  *       content:
@@ -17,26 +25,26 @@ const orderController = require('../controllers/orderController');
  *           schema:
  *             type: object
  *             properties:
- *               "senderName":
+ *               senderName:
  *                 type: string
  *                 example: Kenya Luna
- *               "receiverName":
+ *               receiverName:
  *                 type: string
  *                 example: Alejandra Luna
- *               "packageDetails":
+ *               packageDetails:
  *                 type: string
  *                 example: Books and documents
- *               "shippingAddress":
+ *               shippingAddress:
  *                 type: string
  *                 example: La Arcadia
  *     responses:
- *       '201':
- *         description: Order created successfully
+ *       '200':
+ *         description: Order updated successfully
+ *       '404':
+ *         description: Order not found
  *       '500':
  *         description: Internal server error
- *       
  */
-
 
 // Route for updating an order
 router.put('/orders/:orderId', orderController.updateOrder);
