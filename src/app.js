@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const orderRoutes = require('./routes/orderRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger/swaggerConfig');
+const sequelize = require('./config/dbConfig'); 
 
 const app = express();
 
