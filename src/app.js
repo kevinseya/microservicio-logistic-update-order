@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.use('/api', orderRoutes);
 
 // Start server
-const PORT = 3001;
+const PORT = 7002;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

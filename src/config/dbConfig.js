@@ -3,7 +3,8 @@ const { Sequelize } = require('sequelize');
 // Database connection setup
 const sequelize = new Sequelize('logistics_db', 'root', '1234', {
     host: 'localhost',
-    dialect: 'mysql',
+    dialect: 'mariadb',
+    logging: console.log,
 });
 
 sequelize.authenticate()

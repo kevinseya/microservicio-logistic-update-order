@@ -4,10 +4,10 @@ const orderController = require('../controllers/orderController');
 
 /**
  * @swagger
- * /orders/{orderId}:
+ * /orders/{orderId}/status:
  *   put:
- *     summary: Update an existing order
- *     description: Update an order using its UUID.
+ *     summary: Update the active status of an order
+ *     description: Toggle the active status of an order using its UUID.
  *     tags:
  *       - Orders
  *     parameters:
@@ -17,36 +17,15 @@ const orderController = require('../controllers/orderController');
  *         schema:
  *           type: string
  *           format: uuid
- *         description: The UUID of the order to update
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               senderName:
- *                 type: string
- *                 example: Kenya Luna
- *               receiverName:
- *                 type: string
- *                 example: Alejandra Luna
- *               packageDetails:
- *                 type: string
- *                 example: Books and documents
- *               shippingAddress:
- *                 type: string
- *                 example: La Arcadia
+ *         description: The UUID of the order to update status
  *     responses:
- *       '200':
- *         description: Order updated successfully
- *       '404':
+ *       200:
+ *         description: Successfully updated order status
+ *       404:
  *         description: Order not found
- *       '500':
- *         description: Internal server error
+ *       500:
+ *         description: Server error
  */
-
-// Route for updating an order
-router.put('/orders/:orderId', orderController.updateOrder);
+router.put('/orders/:orderId/status', orderController.updateOrderStatus);
 
 module.exports = router;

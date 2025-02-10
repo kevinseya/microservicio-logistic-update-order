@@ -8,6 +8,10 @@ const Order = sequelize.define('Order', {
         defaultValue: DataTypes.UUIDV4, 
         primaryKey: true, 
     },
+    idCustomer: { 
+        type: DataTypes.UUID,
+        allowNull: false,
+    },
     senderName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -27,10 +31,15 @@ const Order = sequelize.define('Order', {
         type: DataTypes.STRING,
         defaultValue: 'Pending',
     },
+    active:  {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+    }
 });
 
-sequelize.sync({ force: false }) // Sync model with database
-    .then(() => console.log('Order table created successfully'))
-    .catch(err => console.error('Error creating table:', err));
+Order.sync({ alter: true }) 
+    .then(() => console.log('Order table synced successfully'))
+    .catch(err => console.error('Error syncing Order table:', err));
+
 
 module.exports = Order;

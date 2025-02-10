@@ -1,18 +1,24 @@
 const Order = require('../models/order');
 
-// Update an order by ID
-exports.updateOrder = async (req, res) => {
+// Update only the active status of an order by ID
+exports.updateOrderStatus = async (req, res) => {
     try {
-        const { orderId } = req.params; // Tomar el UUID desde la URL
-        const updatedOrder = await Order.update(req.body, { where: { orderId } });
+        const { orderId } = req.params;
 
-        if (updatedOrder[0] === 0) {
+        // Buscar la orden por ID
+        const order = await Order.findOne({ where: { orderId } });
+
+        if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }
 
-        res.status(200).json({ message: 'Order updated successfully' });
+        // Cambiar el estado de activo a inactivo
+        order.active = !order.active;
+        await order.save();
+
+        res.status(200).json({ message: 'Order status updated successfully', order });
     } catch (error) {
-        console.error('Error updating order:', error);
-        res.status(500).json({ message: 'Failed to update order' });
+        console.error('Error updating order status:', error);
+        res.status(500).json({ message: 'Failed to update order status' });
     }
 };

@@ -12,7 +12,7 @@ const swaggerOptions = {
             description: 'API for managing logistics orders',
         },
         servers: [
-            { url: 'http://localhost:3001/api' },
+            { url: 'http://localhost:7002/api' },
         ],
         components: {
             schemas: {
