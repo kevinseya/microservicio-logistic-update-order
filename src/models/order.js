@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/dbConfig');
 
-// Order model definition
 const Order = sequelize.define('Order', {
     orderId: {
         type: DataTypes.UUID, 
@@ -14,32 +13,41 @@ const Order = sequelize.define('Order', {
     },
     senderName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
     receiverName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
+    },
+    receiverPhone: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     packageDetails: {
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT
     },
     shippingAddress: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
+    },
+    deliveryAddress: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    price: {
+        type: DataTypes.FLOAT
     },
     status: {
         type: DataTypes.STRING,
-        defaultValue: 'Pending',
+        defaultValue: 'Pending'
     },
     active:  {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
     }
+}, {
+    tableName: 'orders',  
+    timestamps: true      
 });
-
-Order.sync({ alter: true }) 
-    .then(() => console.log('Order table synced successfully'))
-    .catch(err => console.error('Error syncing Order table:', err));
-
 
 module.exports = Order;

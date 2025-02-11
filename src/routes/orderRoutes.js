@@ -26,6 +26,6 @@ const orderController = require('../controllers/orderController');
  *       500:
  *         description: Server error
  */
-router.put('/orders/:orderId/status', orderController.updateOrderStatus);
+router.put('/order/update/:orderId', orderController.updateOrderStatus);
 
 module.exports = router;
